@@ -17,7 +17,7 @@ class MemberServiceTest {
     @BeforeEach
     public void beforeEach() {
         memberRepository = new MemoryMemberRepository();//private이기떄문에 memberService의 memberRepository에 바로 접근하지못함. 따라서 따로 객체를 만들어준뒤
-        memberService = new MemberService(memberRepository);//넣어줌
+        memberService = new MemberService(memberRepository);//넣어줌 <- 의존성 주입(DI)
     }
     @AfterEach
     public void afterEach() {
