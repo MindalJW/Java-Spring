@@ -1,28 +1,25 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.transaction.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@Transactional
 class MemberServiceTest {
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
-
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();//private이기떄문에 memberService의 memberRepository에 바로 접근하지못함. 따라서 따로 객체를 만들어준뒤
-        memberService = new MemberService(memberRepository);//넣어줌 <- 의존성 주입(DI)
-    }
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
     @Test
     void join() {
@@ -47,13 +44,5 @@ class MemberServiceTest {
 
         memberService.join(member1);
         assertThrows(IllegalStateException.class, () -> memberService.join(member2));
-    }
-
-    @Test
-    void findMember() {
-    }
-
-    @Test
-    void findOne() {
     }
 }

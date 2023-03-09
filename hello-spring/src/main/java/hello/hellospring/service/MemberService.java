@@ -6,12 +6,15 @@ import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 //@Service//스프링부트에서 Service임을 인식할수있게 어노테이션 이게 있어야 스프링컨테이너에 들어가서 Autowired할때 주입할수있음.
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
+
 
     public MemberService(MemberRepository memberRepository) {//Bean에서 MemberRepository를 받아서 저장
         this.memberRepository = memberRepository;
