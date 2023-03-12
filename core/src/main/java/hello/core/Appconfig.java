@@ -14,20 +14,24 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Appconfig {//한눈에 앱의 구성을 알수있게 설정
+
+    @Bean
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    @Bean
+    public DiscountPolicy discountPolicy() {
+        return new FixDiscountPolicy();
+    }
+
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository());
     }
-    @Bean
-    public static MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
-    }
-    @Bean
-    private static DiscountPolicy discountPolicy() {
-        return new RateDiscountPolicy();
+        return new OrderServiceImpl();
     }
 }

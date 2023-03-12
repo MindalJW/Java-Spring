@@ -15,6 +15,7 @@ public class MemberServiceTest {
         //when
         memberService.join(member);
         Member member1 = memberService.findMember(member.getId());
+        System.out.println("member1 = " + member1.getName());
         //then
         Assertions.assertThat(member).isEqualTo(member1);
     }

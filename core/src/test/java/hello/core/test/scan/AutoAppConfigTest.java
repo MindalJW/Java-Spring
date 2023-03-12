@@ -2,6 +2,7 @@ package hello.core.test.scan;
 
 import hello.core.AutoAppConfig;
 import hello.core.member.MemberService;
+import hello.core.order.OrderService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +15,7 @@ public class AutoAppConfigTest {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);//싱글톤 컨테이너 관리해줌
 
         MemberService bean = ac.getBean(MemberService.class);
-        Assertions.assertThat(bean).isInstanceOf(MemberService.class);
+        OrderService orderService = ac.getBean(OrderService.class);
     }
 }
 
