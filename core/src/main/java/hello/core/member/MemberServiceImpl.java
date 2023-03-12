@@ -3,7 +3,7 @@ package hello.core.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("service")//컴포넌트 스캔에 대상이 됨 ->따로 수동으로 설정을하지않아도 자동 빈등록
+@Component//컴포넌트 스캔에 대상이 됨 ->따로 수동으로 설정을하지않아도 자동 빈등록
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
