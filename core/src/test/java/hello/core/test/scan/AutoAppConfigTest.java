@@ -12,9 +12,9 @@ public class AutoAppConfigTest {
 
     @Test
     void basicScan() {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);//싱글톤 컨테이너 관리해줌
+        ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);//컴포넌트 스캔으로 빈등록된 객체들을 싱글톤 컨테이너 관리해줌
 
-        MemberService bean = ac.getBean(MemberService.class);
+        MemberService bean = ac.getBean(MemberService.class);//컨테이너에서 빈가져오기
         OrderService orderService = ac.getBean(OrderService.class);
     }
 }

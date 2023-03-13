@@ -32,6 +32,7 @@ public class Appconfig {//한눈에 앱의 구성을 알수있게 설정
 
     @Bean
     public OrderService orderService() {
-        return new OrderServiceImpl();
+//        return new OrderServiceImpl(memberRepository(), discountPolicy());
+        return null;
     }
 }
